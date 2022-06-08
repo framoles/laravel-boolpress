@@ -17,6 +17,10 @@ class Post extends Model
             return $this->belongsTo(Category::class);
         }
 
+        public function tag(){
+            return $this->belongsToMany(Tags::class);
+        }
+
 
     public static function getSlug($title){
         $slug = Str::slug($title);
