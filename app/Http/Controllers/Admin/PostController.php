@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -31,8 +32,9 @@ class PostController extends Controller
     {
         //
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view("admin.posts.create", compact("categories"));
+        return view("admin.posts.create", compact("categories","tags"));
     }
 
     /**
@@ -47,13 +49,18 @@ class PostController extends Controller
         $request->validate([
             "title" => "required|max:255",
             "content" => "required",
-            "category_id" => "required"
+            "category_id" => "required",
+            "tags" => ""
         ]);
 
         $data = $request->all();
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->slug = Post::getSlug($newPost->title);
+        $newPost->save();
+        //add tags
+        $newPost->tag()->sync($data["tags"]);
+        //save
         $newPost->save();
 
         return redirect()->route("admin.posts.index");
@@ -81,7 +88,9 @@ class PostController extends Controller
     {
         //
         $categories = Category::all();
-        return view("admin.posts.edit",compact("post","categories"));
+        $tags = Tag::all();
+
+        return view("admin.posts.edit",compact("post","categories","tags"));
     }
 
     /**

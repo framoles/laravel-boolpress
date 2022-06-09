@@ -5,6 +5,10 @@
     contenuto:{{ $post->content }}
     slug:{{ $post->slug }}
     Categoria:{{ $post->category->name }}
+    Tags:
+    @foreach ($post->tag as $tag)
+        {{ $tag->name }}
+    @endforeach
     <br><a href="{{ route('admin.posts.edit', $post->id) }}">Aggiorna</a><br>
     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
         @csrf
