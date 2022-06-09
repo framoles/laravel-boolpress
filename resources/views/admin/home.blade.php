@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front-app')
 
 @section('content')
     <div class="container">
@@ -15,6 +15,7 @@
                         @endif
 
                         {{ __('You are logged in!') }}
+                        <a href="{{ route('admin.posts.index') }}">Vai alla dashboard</a>
                     </div>
                 </div>
             </div>
