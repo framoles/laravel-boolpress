@@ -11,11 +11,11 @@ window.axios = require("axios");
 
 import router from "./routes"
 
-window.axios.get("http://127.0.0.1:8000/api/posts").then(r => {
+/* window.axios.get("http://127.0.0.1:8000/api/posts").then(r => {
     console.log(r);
 }).catch(e => {
     console.log(e);
-})
+}) */
 
 /**
  * The following block of code may be used to automatically register your

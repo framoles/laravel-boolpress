@@ -5,6 +5,8 @@ Vue.use(VueRouter);
 
 import HomeComponent from "./components/pages/HomeComponent";
 import ContactComponent from "./components/pages/ContactComponent";
+import PostComponent from "./components/pages/PostComponent";
+import notFoundComponent from "./components/notFoundComponent";
 
 
 const router = new VueRouter({
@@ -19,6 +21,16 @@ const router = new VueRouter({
             path: "/contacts",
             name: "contacts",
             component: ContactComponent
+        },
+        {
+            path: "/post",
+            name: "post",
+            component: PostComponent
+        },
+        {
+            path: "/*",
+            name: "notFound",
+            component: notFoundComponent
         }
     ]
 });
