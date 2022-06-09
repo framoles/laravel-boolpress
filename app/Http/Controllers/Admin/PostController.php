@@ -105,6 +105,7 @@ class PostController extends Controller
         //
 
         $data = $request->all();
+        $post->tag()->sync($data["tags"]);
         $post->update($data);
         $post->slug = Post::getSlug($post->title);
         return redirect()->route("admin.posts.show",$post->id);
@@ -119,6 +120,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->tag()->sync([]);
         $post->delete();
         return redirect()->route("admin.posts.index");
     }
