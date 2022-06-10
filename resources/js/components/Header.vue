@@ -25,6 +25,10 @@ export default {
                 {
                     path: "post",
                     label: "Visualizza i post"
+                },
+                {
+                    path: "categories",
+                    label: "Visualizza categorie"
                 }
             ]
         }

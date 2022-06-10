@@ -7,6 +7,8 @@ import HomeComponent from "./components/pages/HomeComponent";
 import ContactComponent from "./components/pages/ContactComponent";
 import PostComponent from "./components/pages/PostComponent";
 import notFoundComponent from "./components/notFoundComponent";
+import PostDetailComponent from "./components/pages/PostDetailComp";
+import CategoryComponent from "./components/pages/CategoryComponent";
 
 
 const router = new VueRouter({
@@ -28,9 +30,19 @@ const router = new VueRouter({
             component: PostComponent
         },
         {
+            path: "/categories",
+            name: "categories",
+            component: CategoryComponent
+        },
+        {
             path: "/*",
             name: "notFound",
             component: notFoundComponent
+        },
+        {
+            path: "/post/:slug",
+            name: "postDetail",
+            component: PostDetailComponent
         }
     ]
 });

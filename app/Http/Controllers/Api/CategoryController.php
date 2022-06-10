@@ -17,6 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $category = Category::all();
+        return response()->json($category);
 
     }
 
@@ -51,6 +53,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id);
+        $category = Post::all()->where("category_id",$id);
         return response()->json($category);
     }
 
